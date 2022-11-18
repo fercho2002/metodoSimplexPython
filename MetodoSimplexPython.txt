@@ -1,0 +1,149 @@
+class Simplex:
+    
+    def filaPivote(na,nb):
+        if na==0:
+            return 0
+        else:
+            return 1
+    
+    # esta funcion me devuelve el numero menor de la ultima fila de la matriz
+    def numeroMenor(matriz):
+        menor = matriz[x-1][0]
+        for i in range(total):
+            asc = matriz[x-1][i]
+            if asc < menor :
+                menor = asc
+        return menor
+    
+    # esta funcion me devuelve una matriz pero con todo el cicla de la variable que entra y la que sale  
+    def haceCiclo(matri,men,nx):
+        matriResultado = matri
+        index = -1
+        tru = 0
+        while tru == 0:
+            index = index+1
+            if men == matri[2][index]:
+                tru = 1       
+        if (matri[0][index])==0:
+            filaP = 1
+        else:
+            filaP = 0        
+        
+        
+        div = (matriResultado[filaP][index])
+        for j in range(nx):
+            matriResultado[filaP][j] = ((matriResultado[filaP][j])/div)
+            
+            
+        for i in range(3):
+            fija = (matriResultado[i][index])
+            for j in range(nx):
+                if i != filaP:
+                    matriResultado[i][j] = ((matriResultado[i][j])-(fija*(matriResultado[filaP][j])))
+                    
+        return matriResultado
+                    
+            
+                
+        
+        
+        
+    
+    
+    #si es de <= ponga positivo asentdente y si no  acendente pero el negativo y si es = ponga 0
+    ejer=[[3,2,8,0,0,],[2,1,0,1,6,],[8,0,2,1,40,],]
+    con = 0
+    # pongo la cantidad de variabels del problema las xs
+    var = 3
+    #aca en el range pongo cantidad de vectores de arriva 
+    x=3
+    for i in range(x):
+        # el segundo parametro es la longitud de un vector de los de arriva -2
+        y=3
+        if ejer[i][y] != 0 :
+            con = con+1
+
+    print('cantidad de variables que nececito agregar olgura o exeso con =',con)
+
+    total = con+var+2
+    print('total = ',total)
+    # capos por vector = total 
+    # cantidad de vectores = con+1
+    ejer2=[[0,ejer[1][0],ejer[1][1],ejer[1][2],ejer[1][3],0,ejer[1][4],],
+           [0,ejer[2][0],ejer[2][1],ejer[2][2],0,ejer[2][3],ejer[2][4],],
+           [1,(ejer[0][0])*-1,(ejer[0][1])*-1,(ejer[0][2])*-1,0,0,0,],]
+    print()
+    print()
+    print("--- *** ---- *** --- *** --- *** --- *** --- *** --- ***")
+
+    print("Tabla estandar  : ")
+    print()
+    for i in range(x):
+        print("*",ejer2[i][0],"*",ejer2[i][1],"*",ejer2[i][2],"*",ejer2[i][3],"*",ejer2[i][4],"*",ejer2[i][5],"*",ejer2[i][6],"*")
+    print()
+    print("esta es el menor de la fila de z = ",numeroMenor(ejer2))
+    
+    matrizFinal = ejer2
+    menorNegativo = -1
+    
+    print()
+    print()
+    print("--- *** ---- *** --- *** --- *** --- *** --- *** --- ***")
+    
+    print("empiezan las iteraciones : ")
+    
+    print()
+    print()
+    print("--- *** ---- *** --- *** --- *** --- *** --- *** --- ***")
+    
+    contad = 0
+    
+    while menorNegativo < 0:
+        contad = contad +1
+        menorNegativo = numeroMenor(matrizFinal)
+        
+        if menorNegativo < 0:
+            matrizFinal= haceCiclo(matrizFinal,menorNegativo,total)
+            print("Iteracion # ",contad)
+            print()
+            for i in range(x):
+                print("*",matrizFinal[i][0],"*",matrizFinal[i][1],"*",matrizFinal[i][2],"*",matrizFinal[i][3],"*",matrizFinal[i][4],"*",matrizFinal[i][5],"*",matrizFinal[i][6],"*")
+            
+            print()
+            print()
+            print("--- *** ---- *** --- *** --- *** --- *** --- *** --- ***")
+
+        
+       
+
+            
+        
+    
+    print()
+    print()
+    print("--- *** ---- *** --- *** --- *** --- *** --- *** --- ***")
+    
+    print("Tabla ya lista con los resultados  : ")
+    print()
+    for i in range(x):
+        print("*",matrizFinal[i][0],"*",matrizFinal[i][1],"*",matrizFinal[i][2],"*",matrizFinal[i][3],"*",matrizFinal[i][4],"*",matrizFinal[i][5],"*",matrizFinal[i][6],"*")
+
+
+    print()
+    print()
+    print("--- *** ---- *** --- *** --- *** --- *** --- *** --- ***")
+    print("--- *** ---- *** --- *** --- *** --- *** --- *** --- ***")
+    print("--- *** ---- *** --- *** --- *** --- *** --- *** --- ***")
+    print("--- *** ---- *** --- *** --- *** --- *** --- *** --- ***")
+    print()
+    print()
+    print("Solucion : El valor mas optimo para adquirir las targetas cumpliendo las condicciones es =  ",matrizFinal[2][6],"dolares")
+    print("comprando del tipo II a ",matrizFinal[0][6],"dolares y del tipo III a ",matrizFinal[1][6],"dolares")
+   
+                
+            
+        
+
+    
+    
+

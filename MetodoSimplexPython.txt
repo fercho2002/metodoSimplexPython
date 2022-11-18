@@ -7,7 +7,7 @@ class Simplex:
             return 1
     
     # esta funcion me devuelve el numero menor de la ultima fila de la matriz
-    def numeroMenor(matriz):
+    def numeroMenor(matriz,x,total):
         menor = matriz[x-1][0]
         for i in range(total):
             asc = matriz[x-1][i]
@@ -81,7 +81,7 @@ class Simplex:
     for i in range(x):
         print("*",ejer2[i][0],"*",ejer2[i][1],"*",ejer2[i][2],"*",ejer2[i][3],"*",ejer2[i][4],"*",ejer2[i][5],"*",ejer2[i][6],"*")
     print()
-    print("esta es el menor de la fila de z = ",numeroMenor(ejer2))
+    print("esta es el menor de la fila de z = ",numeroMenor(ejer2,x,total))
     
     matrizFinal = ejer2
     menorNegativo = -1
@@ -100,7 +100,7 @@ class Simplex:
     
     while menorNegativo < 0:
         contad = contad +1
-        menorNegativo = numeroMenor(matrizFinal)
+        menorNegativo = numeroMenor(matrizFinal,x,total)
         
         if menorNegativo < 0:
             matrizFinal= haceCiclo(matrizFinal,menorNegativo,total)
